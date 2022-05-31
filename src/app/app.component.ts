@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Astro Bookings';
+  public title = 'Astro Bookings';
   public  subtitle = "Welcome on board";
   public author = "Vicente Rodriguez";
   public authorURL = "https://www.google.com";
