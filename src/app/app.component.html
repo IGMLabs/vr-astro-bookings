@@ -36,17 +36,13 @@
 </article>
         <aside *ngIf="reloading">🎇 Reloading</aside>
 
-
+      <!-- <router-outlet></router-outlet> -->
   </main>
 
-<!-- <router-outlet></router-outlet> -->
+
 
   <footer>
-    <p> 🚀 {{title | uppercase }}</p>
-    <p> {{subtitle}} </p>
-
-    <a [href]="authorURL"> {{author}}</a>
+    <app-footer></app-footer>
   </footer>
-
 </body>
 
