@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-agency',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agency.component.css']
 })
 export class AgencyComponent implements OnInit {
+  public agencyId :string;
 
-  constructor() { }
+  constructor(route: ActivatedRoute) {
+    this.agencyId = route.snapshot.paramMap.get('id') || '';
+   }
 
   ngOnInit(): void {
   }
