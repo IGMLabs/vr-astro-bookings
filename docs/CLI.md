@@ -57,3 +57,6 @@ ng g c trips/trip --type=page
 ```bash
 ng g c contact --type=form
 ```
+ng g m trips/new-trip --module=trips --route=trip/new
+ng g c trips/new-trip --type=page
+ng g c trips/new-trip --type=form
