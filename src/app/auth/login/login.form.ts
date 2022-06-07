@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { FormMessagesService } from 'src/app/core/forms/form-messages.service';
 
 @Component({
   selector: 'app-login-form',
@@ -9,7 +10,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 export class LoginForm implements OnInit {
   public form : FormGroup
 
-  constructor(formBuilder:FormBuilder) {
+  constructor(formBuilder:FormBuilder, public fms : FormMessagesService) {
     this.form=formBuilder.group({
       email:new FormControl('',[Validators.required, Validators.email]),
       password:new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
@@ -22,38 +23,21 @@ export class LoginForm implements OnInit {
   }
 
   public mustShowMessage (controlName :string) : boolean {
-    const control = this.getControl(controlName);
-    if(!control) return false
-    return control.invalid && control.touched;
+    return this.fms.mustShowMessage(this.form, controlName);
   }
 
-  public hasError(ControlName :string): boolean{
-    const control = this.getControl(ControlName);
-
-    if(!control) return false
-    return control.invalid;
+  public hasError(controlName :string): boolean{
+    return this.fms.hasError(this.form, controlName);
 
   }
 
   public getErrorMessage(controlName: string) :string {
-    const control = this.getControl(controlName);
-    if (!control) return '';
-    if (!control.errors) return '';
-    const errors = control.errors;
-    let errorMessage = '';
-    errorMessage += errors['required'] ? '🔥 Field is required' : '';
-    errorMessage += errors['email'] ? '🔥 Should be an email' : '';
-    errorMessage += errors['minlength'] ? `🔥 More than ${errors["minlength"].requiredLength} chars` : '';
-    errorMessage += errors['maxlength'] ? `🔥 Less than ${errors["maxlength"].requiredLength} chars` : '';
-    return errorMessage;
+    return this.fms.getErrorMessageRegister(this.form, controlName);
 
   }
 
   public getPasswordMatchMessage(){
-    const errors = this.form.errors;
-    if(!errors) return ''
-    if(errors['passwordMatch']) return ['passwordMatch']
-    return ''
+    return this.fms.getPasswordMatchMessage(this.form);
   }
 
   public getControl(ControlName :string): AbstractControl | null{

@@ -16,7 +16,7 @@
         <input name="destination"
               type="text"
               formControlName="destination"
-              [attr.aria-invalid]="hasError('destination')">
+              [attr.aria-invalid]="fms.hasError(form, 'destination')">
         <small *ngIf="mustShowMessage('destination')">{{ getErrorMessage('destination') }}</small>
       </div>
       <div>

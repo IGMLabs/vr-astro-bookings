@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { FormMessagesService } from 'src/app/core/forms/form-messages.service';
+import { TransformationsService } from 'src/app/core/utils/transformations.service';
 
 @Component({
   selector: 'app-new-agency-form',
@@ -18,7 +20,7 @@ export class NewAgencyForm implements OnInit {
   ];
   public statuses = ['Active', 'Pending'];
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(formBuilder: FormBuilder, public fms: FormMessagesService, public trans: TransformationsService) {
     this.form = formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       range: new FormControl('', [Validators.required]),
@@ -26,43 +28,22 @@ export class NewAgencyForm implements OnInit {
     });
   }
   public hasError(controlName: string): boolean {
-    const control = this.getControl(controlName);
-    if (!control) return false;
-    return control.invalid;
+     return this.fms.hasError(this.form, controlName);
   }
 
   public mustShowMessage(controlName: string): boolean {
-    const control = this.getControl(controlName);
-    if (!control) return false;
-    return control.touched && control.invalid;
+    return this.fms.mustShowMessage(this.form, controlName);
   }
 
   public getErrorMessage(controlName: string): string {
-    const control = this.getControl(controlName);
-    if (!control) return '';
-    if (!control.errors) return '';
-    const errors = control.errors;
-    let errorMessage = '';
-    errorMessage += errors['required'] ? '🔥 Field is required ' : ' ';
-    errorMessage += errors['minlength']
-      ? `🔥 More than ${errors['minlength'].requiredLength} chars`
-      : ' ';
-    return errorMessage;
+    return this.fms.getErrorMessageAgency(this.form, controlName);
   }
 
   public onSubmitClick() {
     const { name, range, status } = this.form.value;
-    const id = this.getDashId(name);
+    const id = this.trans.getDashId(name);
     const newAgencyData = { id, name, range, status };
     console.warn('Send agency data ', newAgencyData);
-  }
-
-  private getDashId(str: string): string {
-    return str.toLocaleLowerCase().replace(/ /g, '-');
-  }
-
-  private getControl(controlName: string): AbstractControl | null {
-    return this.form.get(controlName);
   }
   ngOnInit(): void {}
 }
