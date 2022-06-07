@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormValidationsService } from 'src/app/core/forms/form-validations.service';
 
 @Component({
   selector: 'app-new-trip-form',
@@ -30,7 +31,7 @@ export class NewTripForm implements OnInit {
     },
   ];
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(formBuilder: FormBuilder,fvs:FormValidationsService) {
     this.form = formBuilder.group({
       agency: new FormControl('', [Validators.required]),
       destination: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)] ),
@@ -40,35 +41,10 @@ export class NewTripForm implements OnInit {
       flightPrice: new FormControl('', [Validators.required, Validators.min(1000000), Validators.max(10000000)] ),
 
     }, {
-      validators: [this.compareDates]
+      validators: [fvs.compareDates]
     });
   }
 
-  private compareDates(form: AbstractControl) : ValidationErrors | null {
-    const start = form.get('start_date')?.value;
-    const end = form.get('end_date')?.value;
-    if (!start || !end) {
-      return {
-        compareDates: 'No dates provided'
-      };
-    }
-    const start_date = new Date(start);
-    const end_date = new Date(end);
-    const today = new Date();
-
-    if (today > start_date){
-      return {
-        compareDates: "You can't travel to the past"
-      };
-    }
-    if (end_date < start_date){
-      return {
-        compareDates: "Travel to the past it's not posible yet"
-      };
-    }
-
-    return null;
-  }
 
   public getDatesMessage() {
     const errors = this.form.errors;
