@@ -1,2 +1,2 @@
 <a role="button" routerLink="agency/new">Add a new Agency</a>
-<app-agencies-list></app-agencies-list>
+<app-agencies-list [agencies]="agencies" (reload)="onReload()"></app-agencies-list>
