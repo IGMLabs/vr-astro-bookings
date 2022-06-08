@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { AgenciesApi } from 'src/app/core/api/agencies.api';
 import { Agency } from 'src/app/core/api/agency.interface';
 import { FormMessagesService } from 'src/app/core/forms/form-messages.service';
 import { FormValidationsService } from 'src/app/core/forms/form-validations.service';
@@ -13,29 +14,12 @@ import { TransformationsService } from 'src/app/core/utils/transformations.servi
 })
 export class NewTripForm extends FormBase implements OnInit {
   public start_date = 0;
-  public agencies : Agency[] = [
-    {
-      id: 'space-y',
-      name: 'Space Y',
-      range: 'Interplanetary',
-      status: 'Active',
-    },
-    {
-      id: 'green-origin',
-      name: 'Green Origin',
-      range: 'Orbital',
-      status: 'Active',
-    },
-    {
-      id: 'virgin-way',
-      name: 'Virgin Way',
-      range: 'Orbital',
-      status: 'Pending',
-    },
-  ];
+  public agencies : Agency[];
 
-  constructor(formBuilder: FormBuilder,fvs:FormValidationsService, fms:FormMessagesService, public trans:TransformationsService) {
+  constructor(formBuilder: FormBuilder,fvs:FormValidationsService,
+    fms:FormMessagesService, public trans:TransformationsService,  agenciesApi : AgenciesApi) {
     super(fms);
+    this.agencies = agenciesApi.getAll();
     this.form = formBuilder.group({
       agency: new FormControl('', [Validators.required]),
       destination: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)] ),
