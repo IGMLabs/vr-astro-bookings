@@ -1,1 +1,4 @@
-<app-new-agency-form></app-new-agency-form>
+<app-new-agency-form [ranges]="ranges"
+                      [statuses]="statuses"
+                      (save)="onSave($event)"
+                     ></app-new-agency-form>

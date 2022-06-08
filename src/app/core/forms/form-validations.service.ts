@@ -25,8 +25,8 @@ export class FormValidationsService {
   }
 
   public compareDates(form: AbstractControl) : ValidationErrors | null {
-    const start = form.get('start_date')?.value;
-    const end = form.get('end_date')?.value;
+    const start = form.get('startDate')?.value;
+    const end = form.get('endDate')?.value;
     if (!start || !end) {
       return {
         compareDates: 'No dates provided'

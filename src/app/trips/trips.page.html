@@ -1,2 +1,3 @@
-<a role="button" routerLink="trip/new">Add a new TRIP</a>
-<app-trips-list></app-trips-list>
+<a role="button" routerLink="trip/new">➕ Add a new Trip</a>
+<app-trips-list   [trips]="trips"
+                  (reload)="onReload()"></app-trips-list>

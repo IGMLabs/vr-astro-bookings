@@ -1,5 +1,3 @@
 
-<app-agencies-list></app-agencies-list>
-<app-trips-list></app-trips-list>
-  <aside *ngIf="reloading">🎇 Reloading</aside>
-    <app-reloading *ngIf="reloading"></app-reloading>
+<app-agencies-list [agencies]="agencies"></app-agencies-list>
+<app-trips-list [trips]="trips"></app-trips-list>
