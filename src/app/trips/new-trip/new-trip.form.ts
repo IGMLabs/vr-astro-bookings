@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { Agency } from 'src/app/core/api/agency.interface';
 import { FormMessagesService } from 'src/app/core/forms/form-messages.service';
 import { FormValidationsService } from 'src/app/core/forms/form-validations.service';
 import { FormBase } from 'src/app/core/forms/form.base';
@@ -12,7 +13,7 @@ import { TransformationsService } from 'src/app/core/utils/transformations.servi
 })
 export class NewTripForm extends FormBase implements OnInit {
   public start_date = 0;
-  public agencies = [
+  public agencies : Agency[] = [
     {
       id: 'space-y',
       name: 'Space Y',
