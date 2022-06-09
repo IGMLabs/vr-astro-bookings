@@ -10,13 +10,15 @@ import { TripsApi } from 'src/app/core/api/trips.api';
 })
 export class TripPage implements OnInit {
   public tripId : string;
-  public trip?: Trip
+  public trip?: Trip ;
 
 
 
   constructor(route: ActivatedRoute, tripsApi: TripsApi) {
     this.tripId = route.snapshot.paramMap.get('id') || '';
-    this.trip = tripsApi.getById(this.tripId);
+    tripsApi.getById(this.tripId).subscribe((data)=>{
+      this.trip= data;
+    });
   }
 
   ngOnInit(): void {

@@ -19,6 +19,12 @@
       "name": "Virgin Way",
       "range": "Orbital",
       "status": "Pending"
+    },
+    {
+      "id": "chantadanasa",
+      "name": "ChantadaNasa",
+      "range": "Orbital",
+      "status": "Active"
     }
   ],
   "trips": [
@@ -81,6 +87,15 @@
       "status": "Waiting",
       "extraLuggagePricePerKilo": 0,
       "premiumFoodPrice": 1000
+    },
+    {
+      "id": "green-origin-luna",
+      "agencyId": "green-origin",
+      "destination": "LUNA",
+      "places": 2,
+      "startDate": "2022-06-10",
+      "endDate": "2022-06-30",
+      "flightPrice": 1111111
     }
   ]
 }

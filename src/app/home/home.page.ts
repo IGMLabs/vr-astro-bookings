@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
   public agencies!: Agency[];
 
   constructor(tripsApi: TripsApi, agenciesApi: AgenciesApi) {
-    this.trips = tripsApi.getAll();
+    tripsApi.getAll$().subscribe((data)=>{this.trips=data});
     agenciesApi.getAll$().subscribe((data)=>{this.agencies=data});
    }
 
