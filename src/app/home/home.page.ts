@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
 
   constructor(tripsApi: TripsApi, agenciesApi: AgenciesApi) {
     this.trips = tripsApi.getAll();
-    agenciesApi.getAll().subscribe((data)=>{this.agencies=data});
+    agenciesApi.getAll$().subscribe((data)=>{this.agencies=data});
    }
 
   ngOnInit(): void {
