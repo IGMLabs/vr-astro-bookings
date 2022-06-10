@@ -15,23 +15,15 @@ export class AgenciesPage implements OnInit {
 
   public error : boolean = false;
 
-  // private subscriptor = {
-  //   next: (data : Agency[])=> {
-  //     // this.agencies = data;
-  //   },
-  //   error: (err : Error)=>{
-  //     console.log("hay un fallo");
-  //     this.error= true;
-  //   }
-  // }
-
   constructor(private agenciesApi : AgenciesApi) {
     // agenciesApi.getAll$().subscribe(this.subscriptor);
-    this.agencies$ = this.agenciesApi.getAll$().pipe();
+    this.agencies$ = this.agenciesApi.getAll$();
    }
 
   ngOnInit(): void {
   }
+
+
   onReload(){
     this.agenciesApi.getAll$().subscribe((data)=> {
       // this.agencies = data;

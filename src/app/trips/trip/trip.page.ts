@@ -16,7 +16,7 @@ export class TripPage implements OnInit {
 
   constructor(route: ActivatedRoute, tripsApi: TripsApi) {
     this.tripId = route.snapshot.paramMap.get('id') || '';
-    tripsApi.getById(this.tripId).subscribe((data)=>{
+    tripsApi.getById$(this.tripId).subscribe((data)=>{
       this.trip= data;
     });
   }

@@ -1,4 +1,7 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000/'
+  apiUrl: 'https://api.hotusa.com/',
+  settings: {
+    dateFormat: 'dd/mm/yyy',
+  },
 };

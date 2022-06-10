@@ -10,11 +10,11 @@ import { Agency } from 'src/app/core/api/agency.interface';
 })
 export class AgencyComponent implements OnInit {
   public agencyId: string;
-  public agency!: Agency [];
+  public agency!: Agency ;
 
   constructor(route: ActivatedRoute, agenciesApi: AgenciesApi) {
     this.agencyId = route.snapshot.paramMap.get('id') || '';
-    agenciesApi.getById(this.agencyId).subscribe((data) => {
+    agenciesApi.getById$(this.agencyId).subscribe((data) => {
       this.agency = data;
     });
   }

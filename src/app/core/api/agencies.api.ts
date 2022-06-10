@@ -1,15 +1,16 @@
-import { Injectable } from "@angular/core";
-import { Agency } from "./agency.interface";
-import { HttpClient } from "@angular/common/http";
-import { CrudApi } from "./crud";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Agency } from './agency.interface';
+import { CrudApi } from './crud';
+import { StatusStore } from './status.store';
 
 @Injectable({
   providedIn: 'root',
 }
 )
 export class AgenciesApi extends CrudApi<Agency> {
-  constructor(http: HttpClient) {
-    super(http, 'agencies');
+  constructor(http: HttpClient,statusStore: StatusStore) {
+    super(http, 'agencies', statusStore);
   }
 
 }
