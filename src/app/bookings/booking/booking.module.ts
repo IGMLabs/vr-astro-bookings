@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { BookingRoutingModule } from './booking-routing.module';
 import { BookingPage } from './booking.page';
 import { BookingView } from './booking.view';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
