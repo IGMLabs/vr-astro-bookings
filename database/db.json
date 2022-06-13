@@ -24,6 +24,13 @@
       "date": "2022-09-06",
       "luggageKilos": 22,
       "hasPremiumFoodPrice": true
+    },
+    {
+      "id": "space-y-moon-12022-09-03chantada",
+      "tripId": "space-y-moon-1",
+      "passengerName": "chantada",
+      "date": "2022-09-03",
+      "luggageKilos": 221
     }
   ],
   "agencies": [

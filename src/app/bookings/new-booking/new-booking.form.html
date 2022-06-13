@@ -45,10 +45,9 @@
     <div>
       <input
         type="checkbox"
-        id="hasPremiumFoodPrice"
-        name="hasPremiumFoodPrice"
-        formControlName="hasPremiumFoodPrice"
-        (change)="hasPremiumFood = !hasPremiumFood"
+        id="hasPremiumFood"
+        name="hasPremiumFood"
+        formControlName="hasPremiumFood"
 
         />
       <label for="hasPremiumFood">Do you want premium food?</label>
@@ -59,6 +58,6 @@
   <div>
     <button type="submit"
             (click)="onSubmitClick()"
-            [disabled]="form.invalid"> Send new agency data </button>
+            [disabled]="form.invalid"> Send new Booking data </button>
   </div>
 </form>

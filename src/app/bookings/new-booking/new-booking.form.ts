@@ -14,7 +14,7 @@ import { TransformationsService } from 'src/app/core/utils/transformations.servi
   styleUrls: ['./new-booking.form.css']
 })
 export class NewBookingForm extends FormBase implements OnInit {
-  public hasPremiumFood : boolean = false
+
 
   @Input() public trips : Trip [] =[];
   @Output() public save =  new EventEmitter<Booking>();
@@ -26,6 +26,7 @@ export class NewBookingForm extends FormBase implements OnInit {
         passengerName: new FormControl(),
         date: new FormControl('', [Validators.required]),
         luggageKilos: new FormControl('', [Validators.required]),
+        hasPremiumFood : new FormControl(false),
     });
     this.tripsApi.getAll$().subscribe((trips)=> this.trips = trips);
    }
@@ -33,7 +34,7 @@ export class NewBookingForm extends FormBase implements OnInit {
 
 
    public onSubmitClick() {
-    const { tripId, passengerName,date,luggageKilos,hasPremiumFoodPrice=this.hasPremiumFood} = this.form.value;
+    const { tripId, passengerName,date,luggageKilos,hasPremiumFoodPrice} = this.form.value;
     const id = this.trans.getDashId(tripId+date+passengerName);
     const newBookingData = { id, tripId, passengerName, date, luggageKilos, hasPremiumFoodPrice};
     console.warn('Send booking data ', newBookingData);
