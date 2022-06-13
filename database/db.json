@@ -1,6 +1,16 @@
 {
   "users": [],
-  "bookings": [],
+  "bookings": [
+    {
+      "id": "asdfg",
+      "tripId": "space-y",
+      "passengerName": "Tommy",
+      "date": "2023-02-01",
+      "luggageKilos": 5,
+      "hasPremiumFoodPrice": true
+ }
+
+  ],
   "agencies": [
     {
       "id": "space-y",
