@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Booking } from 'src/app/core/api/booking.interface';
 
 @Component({
@@ -8,8 +8,8 @@ import { Booking } from 'src/app/core/api/booking.interface';
 })
 export class BookingView implements OnInit {
 
-  public bookingId : string = ""
-  public booking! : Booking
+ @Input() public bookingId : string = ""
+  @Input() public booking! : Booking
 
   constructor() { }
 

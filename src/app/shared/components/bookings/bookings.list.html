@@ -1,1 +1,10 @@
-<p>bookings works LIST!</p>
+<article>
+  <h3> Working with {{getBookingsLength()}} bookings </h3>
+  <ul>
+    <li *ngFor="let booking of bookings ">
+      <a [routerLink]="['/','bookings','booking', booking.id ]"
+         [ngClass]="booking.id | lowercase">{{ booking.id }}</a>
+    </li>
+  </ul>
+  <button (click)="onReloadClick('bookings')">🎇</button>
+</article>

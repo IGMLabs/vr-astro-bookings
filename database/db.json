@@ -8,8 +8,23 @@
       "date": "2023-02-01",
       "luggageKilos": 5,
       "hasPremiumFoodPrice": true
- }
-
+    },
+    {
+      "id": "green-origin-low-orbit-32022-08-02vicente",
+      "tripId": "green-origin-low-orbit-3",
+      "passengerName": "Vicente",
+      "date": "2022-08-02",
+      "luggageKilos": 22,
+      "hasPremiumFoodPrice": true
+    },
+    {
+      "id": "green-origin-luna2022-09-06bookingchanmonforte",
+      "tripId": "green-origin-luna",
+      "passengerName": "bookingChanMOnforte",
+      "date": "2022-09-06",
+      "luggageKilos": 22,
+      "hasPremiumFoodPrice": true
+    }
   ],
   "agencies": [
     {
