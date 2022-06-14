@@ -13,7 +13,7 @@ export class FormMessagesService {
     if (!control) return false;
     return control.invalid;
   }
-  private getControl(form:FormGroup,controlName:string):AbstractControl | null{
+  public getControl(form:FormGroup,controlName:string):AbstractControl | null{
     return form.get(controlName);
   }
 
