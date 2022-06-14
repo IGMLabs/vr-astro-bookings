@@ -9,6 +9,7 @@
            [attr.aria-invalid]="hasError('name')">
       <small *ngIf="mustShowMessage('name')" > {{getErrorMessage('name')}}</small>
   </div>
+  <app-email-control formControlName="email"></app-email-control>
   <div>
     <label for="email">Email Address</label>
     <input type="email"
