@@ -31,6 +31,20 @@
       "passengerName": "chantada",
       "date": "2022-09-03",
       "luggageKilos": 221
+    },
+    {
+      "id": "green-origin-luna2022-06-20pradeda",
+      "tripId": "green-origin-luna",
+      "passengerName": "Pradeda",
+      "date": "2022-06-20",
+      "luggageKilos": "2"
+    },
+    {
+      "id": "green-origin-luna2022-07-09maria",
+      "tripId": "green-origin-luna",
+      "passengerName": "Maria",
+      "date": "2022-07-09",
+      "luggageKilos": "34"
     }
   ],
   "agencies": [
@@ -128,6 +142,15 @@
       "startDate": "2022-06-10",
       "endDate": "2022-06-30",
       "flightPrice": 1111111
+    },
+    {
+      "id": "green-origin-house",
+      "agencyId": "green-origin",
+      "destination": "HOUSE",
+      "places": "2",
+      "startDate": "2022-07-12",
+      "endDate": "2023-05-06",
+      "flightPrice": "3311111"
     }
   ]
 }

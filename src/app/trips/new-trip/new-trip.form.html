@@ -11,7 +11,7 @@
         </select>
         <small *ngIf="mustShowMessage('agencyId')">{{ getErrorMessage('agencyId') }}</small>
       </div>
-      <div>
+      <!-- <div>
         <label for="destination"> Destination</label>
         <input name="destination"
               type="text"
@@ -53,7 +53,26 @@
         <small *ngIf="mustShowMessage('flightPrice')">{{ getErrorMessage('flightPrice') }}</small>
       </div>
     </fieldset>
-  </div>
+  </div> -->
+
+<app-template-control [form]="form" formControlName="destination"
+  label=" Destination Name" placeHolder="Your Destination"> </app-template-control>
+
+  <app-template-control [form]="form" formControlName="places"
+  label="Places" placeHolder="" inputType="number"> </app-template-control>
+
+  <app-template-control [form]="form" formControlName="flightPrice"
+  label="Price" placeHolder="" inputType="number"> </app-template-control>
+
+  <app-template-control [form]="form" formControlName="startDate"
+  label="Date from" placeHolder="" inputType="date"> </app-template-control>
+
+  <app-template-control [form]="form" formControlName="endDate"
+  label="Date to" placeHolder="" inputType="date"> </app-template-control>
+
+</fieldset>
+</div>
+
   <button [disabled]="form.invalid"
           (click)="onSubmitClick()">Save</button>
 </form>

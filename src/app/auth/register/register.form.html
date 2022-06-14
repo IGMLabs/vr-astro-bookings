@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-  <div>
+  <!-- <div>
     <label for="name">Name</label>
     <input type="text"
            id="name"
@@ -8,10 +8,12 @@
            placeholder="Your name"
            [attr.aria-invalid]="hasError('name')">
       <small *ngIf="mustShowMessage('name')" > {{getErrorMessage('name')}}</small>
-  </div>
+  </div> -->
+  <app-template-control [form]="form" formControlName="name"
+  label="Name" placeHolder="Your Name"> </app-template-control>
   <app-email-control formControlName="email"></app-email-control>
 
-  <div>
+  <!-- <div>
     <label for="password">Email password</label>
     <input type="password"
            id="password"
@@ -20,8 +22,13 @@
            placeholder="Your password"
            [attr.aria-invalid]="hasError('password')">
       <small *ngIf="mustShowMessage('password')" > {{getErrorMessage('password')}}</small>
-  </div>
-  <div>
+  </div> -->
+  <app-template-control [form]="form" formControlName="password"
+  label="Password" placeHolder="Your Password" inputType="password"> </app-template-control>
+
+  <app-template-control [form]="form" formControlName="confirmPassword"
+  label="Confirm your password" placeHolder="Confirm your password" inputType="password"> </app-template-control>
+  <!-- <div>
     <label for="confirmPassword">Confirm password</label>
     <input type="password"
            id="confirmPassword"
@@ -31,7 +38,7 @@
            [attr.aria-invalid]="hasError('confirmPassword')">
       <small *ngIf="mustShowMessage('confirmPassword')" > {{getErrorMessage('confirmPassword')}}</small>
       <small> {{getPasswordMatchMessage()}}</small>
-  </div>
+  </div> -->
   <div>
 
     <input type="checkbox"
@@ -43,6 +50,8 @@
       <small *ngIf="mustShowMessage('email')" > {{getErrorMessage('email')}}</small>
 
   </div>
+  <!-- <app-template-control [form]="form" formControlName="acceptTerms"
+  label="Accept Terms" placeHolder="" inputType="checkbox"> </app-template-control> -->
 
   <pre>{{form.errors | json}}</pre>
   <button [disabled]="form.invalid" (click)="onSave()">Save</button>

@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BookingsList } from './components/bookings/bookings.list';
 import { EmailControl } from './controls/email/email.control';
 import { TemplateControl } from './controls/template/template.control';
+import { SearchControl } from './controls/search/search.control';
 
 
 
@@ -18,7 +19,8 @@ import { TemplateControl } from './controls/template/template.control';
     TripsList,
     BookingsList,
     EmailControl,
-    TemplateControl
+    TemplateControl,
+    SearchControl
   ],
   imports: [
     CommonModule, RouterModule,ReactiveFormsModule
@@ -31,7 +33,8 @@ import { TemplateControl } from './controls/template/template.control';
     ReactiveFormsModule,
     BookingsList,
     EmailControl,
-    TemplateControl
+    TemplateControl,
+    SearchControl
   ]
 })
 export class SharedModule { }

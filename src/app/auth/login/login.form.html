@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <app-email-control formControlName="email"></app-email-control>
-  <div>
+  <!-- <div>
     <label for="password">Email password</label>
     <input type="password"
            id="password"
@@ -9,7 +9,9 @@
            placeholder="Your password"
            [attr.aria-invalid]="hasError('password')">
       <small *ngIf="mustShowMessage('password')" > {{getErrorMessage('password')}}</small>
-  </div>
+  </div> -->
+  <app-template-control [form]="form" formControlName="password"
+  label="Password" placeHolder="Your Password" inputType="password"> </app-template-control>
   <button [disabled]="form.invalid" (click)="onSave()">Save</button>
 </form>
 
