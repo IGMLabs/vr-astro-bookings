@@ -56,7 +56,60 @@ ng g c trips/trip --type=page
 
 ```bash
 ng g c contact --type=form
-```
+ng g c auth/register --type=form
+
+ng g m agencies/new-agency --module=agencies --route=agency/new
+ng g c agencies/new-agency --type=page
+ng g c agencies/new-agency --type=form
+
+
 ng g m trips/new-trip --module=trips --route=trip/new
 ng g c trips/new-trip --type=page
 ng g c trips/new-trip --type=form
+
+```
+
+## 5. Services
+
+```bash
+
+ng g s core/forms/form-validations
+ng g s core/forms/form-messages
+ng g s core/utils/transformations
+
+ng g class core/forms/form --type=base
+
+ng g i core/api/agency --type=interface
+ng g i core/api/id-name --type=interface
+```
+
+## 6. Containers
+
+```bash
+ng g c agencies/agency --type=view
+```
+
+## 7. Http
+
+```bash
+npm i -D json-server json-server-auth
+npm run api
+
+```
+
+## 8. Pro
+
+```bash
+ng g class core/api/crud --type=api
+```
+
+## 9. Practice
+
+## 10. Forms CVA
+
+```bash
+
+ng g c shared/controls/email --type=control --export
+ng g c shared/controls/template --type=control --export
+ng g c shared/controls/search --type=control --export
+```

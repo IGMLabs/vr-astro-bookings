@@ -1,5 +1,6 @@
-Astro bookings tasks
-A website for space travel reservations.
+# Astro bookings tasks
+
+> A website for space travel reservations.
 
 ## 0. Application, module, and root component.
 
@@ -63,12 +64,53 @@ A website for space travel reservations.
 
 ## 4. Forms
 
-- [ ] Create a form for the contact page
-- [ ] Create a form for the register page
-- [ ] Create a form for a new Agency
+- [x] Create a form for the contact page
+- [x] Create a form for the register page
+- [x] Create a form for a new Agency
 
 > Student tasks:
 
-- [ ] Create a form for the login page
-- [ ] Create a form for a new Trip
- 
+- [x] Create a form for the login page
+- [x] Create a form for a new Trip
+
+## 5. Services
+
+- [x] Create a service to validate forms
+- [x] Create a service to manage form messages
+- [x] Create a class as a base to form components
+- [x] Create a service for common utilities
+- [x] Create a service to manage agencies API
+- [x] Create an interface for an agency object
+- [x] Create an interface for id name pairs
+
+> Student tasks:
+
+- [x] Use services on each form
+- [x] Create a service for common utilities (getDashId)
+- [x] Create an interface for a trip object
+- [x] Create a service to manage trips API
+
+## 6. Containers
+
+- [x] Use container/presenters pattern for AgenciesPage and AgenciesList
+- [x] Use container/presenters pattern for NewAgencyPage and NewAgencyForm
+
+## 7. Http
+
+## 8. Pro
+
+- [x] Base class for CRUD operations
+
+## 9. Practice
+
+- [ ] Create CRUD functionality for Bookings
+- [ ] Route ./bookings/\*\*
+- [ ] bookings.list
+- [ ] bookings.form
+- [ ] booking.view
+
+## 10 Form CVA
+
+- [x] Email Control Value Accessor
+- [x] Template Control Value Accessor
+- [ ] Search Control
