@@ -3,7 +3,7 @@
   <ul>
     <li *ngFor="let agency of agencies ">
       <a [routerLink]="['.']" [queryParams]="{ q: agency.id }" queryParamsHandling="merge"> 🚀 </a>
-      <button (click)="onSearchClick(agency.id)">📡 </button>
+      <span (click)="onSearchClick(agency.id)">📡 </span>
       <a [routerLink]="['/','agencies','agency', agency.id ]"
          [ngClass]="agency.status | lowercase">{{ agency.name }}</a>
       <ng-container *ngIf="agency.range==='Interplanetary' then interplanetary; else orbital">
