@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { catchError, map, Observable, Subject, switchMap, concatMap, exhaustMap,mergeMap, BehaviorSubject } from 'rxjs';
 import { AgenciesApi } from '../core/api/agencies.api';
 import { Agency } from '../core/api/agency.interface';
+import { Trip } from '../core/api/trip.interface';
 
 @Component({
   selector: 'app-agencies',
@@ -13,12 +15,13 @@ export class AgenciesPage implements OnInit {
   // public agencies! :Agency[];
 
   public agencies$ : Observable<Agency[]>;
+  public trips$! : Observable<Trip[]>;
 
   private search$ : BehaviorSubject<string> = new BehaviorSubject('');
 
   public error : boolean = false;
 
-  constructor(private agenciesApi : AgenciesApi) {
+  constructor(private agenciesApi : AgenciesApi, private route :ActivatedRoute) {
     // agenciesApi.getAll$().subscribe(this.subscriptor);
     // this.search$.subscribe((searchTerm) => (this.agencies$ = this.agenciesApi.getByText$(searchTerm)) );
     // this.agencies$ = this.agenciesApi.getAll$();
@@ -29,7 +32,13 @@ export class AgenciesPage implements OnInit {
       //exhaustMap((searchTerm)=> this.agenciesApi.getByText$(searchTerm))
       //mergeMap((searchTerm)=> this.agenciesApi.getByText$(searchTerm))
       //map(searchTerm => this.agenciesApi.getByText$(searchTerm))
-      )
+      );
+
+      // const q = this.route.snapshot.queryParamMap.get('q');
+      // console.log(q);
+
+      this.route.queryParamMap.subscribe((queryParamMap) => console.log(queryParamMap.get('q')));
+
    }
 
   ngOnInit(): void {
