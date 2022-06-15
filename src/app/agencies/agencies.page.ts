@@ -5,6 +5,7 @@ import { catchError, map, Observable, Subject, switchMap, concatMap, exhaustMap,
 import { AgenciesApi } from '../core/api/agencies.api';
 import { Agency } from '../core/api/agency.interface';
 import { Trip } from '../core/api/trip.interface';
+import { TripsApi } from '../core/api/trips.api';
 
 @Component({
   selector: 'app-agencies',
@@ -19,12 +20,15 @@ export class AgenciesPage implements OnInit {
 
   private search$ : BehaviorSubject<string> = new BehaviorSubject('');
 
+
   public error : boolean = false;
 
-  constructor(private agenciesApi : AgenciesApi, private route :ActivatedRoute) {
+  constructor(private agenciesApi : AgenciesApi, private route :ActivatedRoute, private tripsApi :TripsApi) {
     // agenciesApi.getAll$().subscribe(this.subscriptor);
     // this.search$.subscribe((searchTerm) => (this.agencies$ = this.agenciesApi.getByText$(searchTerm)) );
     // this.agencies$ = this.agenciesApi.getAll$();
+
+
     this.agencies$ =this.search$.pipe(
 
       switchMap((searchTerm)=> this.agenciesApi.getByText$(searchTerm))
@@ -37,7 +41,17 @@ export class AgenciesPage implements OnInit {
       // const q = this.route.snapshot.queryParamMap.get('q');
       // console.log(q);
 
-      this.route.queryParamMap.subscribe((queryParamMap) => console.log(queryParamMap.get('q')));
+      // this.route.queryParamMap.subscribe((queryParamMap) => {
+      //   const q = queryParamMap.get('q');
+      //   this.trips$ = this.tripsApi.getByText$(q);
+      //   console.log(q);
+      // } );
+
+      this.trips$ = this.route.queryParamMap.pipe(
+                                                  map((qpm) => qpm.get('q')),
+                                                  switchMap((agencyId) => this.tripsApi.getByText$(agencyId))
+      )
+
 
    }
 
