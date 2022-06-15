@@ -5,7 +5,7 @@ import { StatusStore } from './status.store';
 
 
 export abstract class CrudApi <T> {
-  private url = environment.apiUrl + this.endPoint + '/';
+   protected url = environment.apiUrl + this.endPoint + '/';
 
   private statusPipe = pipe(
     tap(() => this.notifyIdle()),
@@ -15,7 +15,7 @@ export abstract class CrudApi <T> {
     })
   );
 
-  constructor(private http: HttpClient, private endPoint: string, protected statusStore: StatusStore) {}
+  constructor(protected http: HttpClient, private endPoint: string, protected statusStore: StatusStore) {}
 
   public getAll$() {
     return this.http.get<T[]>(this.url).pipe(this.statusPipe);

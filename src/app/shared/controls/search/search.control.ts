@@ -17,7 +17,8 @@ export class SearchControl implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.searchInput$ = fromEvent(this.searchInput.nativeElement, 'keyup')
+    const nativeSource$ = fromEvent(this.searchInput.nativeElement,'keyup');
+    this.searchInput$ = nativeSource$
                                   .pipe(
                                     map(( event ) => (event as any).target.value),
                                     tap((searchTerm)=> console.log(searchTerm)),
