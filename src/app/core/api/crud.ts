@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { catchError, of, pipe, tap } from 'rxjs';
+import { catchError, Observable, of, pipe, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StatusStore } from './status.store';
 
@@ -46,5 +46,10 @@ export abstract class CrudApi <T> {
   private notifyError(message: string) {
     console.warn({ isWorking: false, errorMessage: message });
     this.statusStore.setState({ isWorking: false, errorMessage: message });
+  }
+
+  public getByText$(text : string |null) : Observable<T[]>{
+    if (text ===  null || text == '') return this.getAll$();
+    return this.http.get<T[]>(this.url + '?q=' +text);
   }
 }

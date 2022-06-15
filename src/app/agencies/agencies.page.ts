@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { catchError, map, Observable, Subject, switchMap, concatMap, exhaustMap,mergeMap, BehaviorSubject } from 'rxjs';
 import { AgenciesApi } from '../core/api/agencies.api';
 import { Agency } from '../core/api/agency.interface';
@@ -9,7 +10,7 @@ import { Agency } from '../core/api/agency.interface';
   styleUrls: ['./agencies.page.css']
 })
 export class AgenciesPage implements OnInit {
-   public agencies! :Agency[];
+  // public agencies! :Agency[];
 
   public agencies$ : Observable<Agency[]>;
 
@@ -20,7 +21,7 @@ export class AgenciesPage implements OnInit {
   constructor(private agenciesApi : AgenciesApi) {
     // agenciesApi.getAll$().subscribe(this.subscriptor);
     // this.search$.subscribe((searchTerm) => (this.agencies$ = this.agenciesApi.getByText$(searchTerm)) );
-    this.agencies$ = this.agenciesApi.getAll$();
+    // this.agencies$ = this.agenciesApi.getAll$();
     this.agencies$ =this.search$.pipe(
 
       switchMap((searchTerm)=> this.agenciesApi.getByText$(searchTerm))
@@ -40,6 +41,7 @@ export class AgenciesPage implements OnInit {
   }
 
   onSearch (searchTerms:string){
+    console.log('funciona')
     this.search$.next(searchTerms);
   }
 }

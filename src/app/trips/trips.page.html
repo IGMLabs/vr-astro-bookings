@@ -1,4 +1,7 @@
 <a role="button" routerLink="trip/new">➕ Add a new Trip</a>
+
+<app-search-page (search)="onSearch($event)"></app-search-page>
+
 <app-trips-list
                   *ngIf="(trips$ | async) as trips ; else waiting"
                   [trips]="trips"

@@ -14,10 +14,10 @@ export class AgenciesApi extends CrudApi<Agency> {
     super(http, 'agencies', statusStore);
   }
 
-  public getByText$(text : string |null) : Observable<Agency[]>{
-    if (text ===  null || text == '') return this.getAll$();
-    return this.http.get<Agency[]>(this.url + '?q=' +text);
-  }
+  // public getByText$(text : string |null) : Observable<Agency[]>{
+  //   if (text ===  null || text == '') return this.getAll$();
+  //   return this.http.get<Agency[]>(this.url + '?q=' +text);
+  // }
 
 }
 
