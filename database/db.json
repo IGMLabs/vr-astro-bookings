@@ -1,5 +1,12 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "vicen@vicen.es",
+      "password": "$2a$10$GsIwROPMidmO5KliOvNXQuC9MYJyFFfae2s/SLdbydTDqPdtmnysy",
+      "name": "Vicente",
+      "id": 1
+    }
+  ],
   "bookings": [
     {
       "id": "asdfg",

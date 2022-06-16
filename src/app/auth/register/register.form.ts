@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { FormMessagesService } from 'src/app/core/forms/form-messages.service';
 import { FormValidationsService } from 'src/app/core/forms/form-validations.service';
 import { FormBase } from 'src/app/core/forms/form.base';
+import { Register } from '../api/register.interface';
 
 @Component({
   selector: 'app-register-form',
@@ -10,6 +11,8 @@ import { FormBase } from 'src/app/core/forms/form.base';
   styleUrls: ['./register.form.css']
 })
 export class RegisterForm extends FormBase implements OnInit {
+
+  @Output() register = new EventEmitter<Register>();
 
   constructor(formBuilder:FormBuilder, fvs:FormValidationsService, fms:FormMessagesService) {
     super(fms);
@@ -34,9 +37,10 @@ export class RegisterForm extends FormBase implements OnInit {
 
 
   public onSave(){
-    const  {name, email, password} = this.form.value;
-    const register = {name, email, password};
-    console.warn('Send contact message', register);
+    const { name, email, password } = this.form.value;
+    const register: Register = { name, email: email.email, password };
+    console.warn('Send register', register);
+    this.register.emit(register);
   }
 
 }

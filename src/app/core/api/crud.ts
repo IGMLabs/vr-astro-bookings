@@ -50,6 +50,6 @@ export abstract class CrudApi <T> {
 
   public getByText$(text : string |null) : Observable<T[]>{
     if (text ===  null || text == '') return this.getAll$();
-    return this.http.get<T[]>(this.url + '?q=' +text ).pipe(delay(3000));
+    return this.http.get<T[]>(this.url + '?q=' +text );
   }
 }
