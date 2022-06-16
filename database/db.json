@@ -78,6 +78,30 @@
       "name": "ChantadaNasa",
       "range": "Orbital",
       "status": "Active"
+    },
+    {
+      "id": "estivada",
+      "name": "Estivada",
+      "range": "Interplanetary",
+      "status": "Active"
+    },
+    {
+      "id": "quinta",
+      "name": "quinta",
+      "range": "Interplanetary",
+      "status": "Active"
+    },
+    {
+      "id": "barrio",
+      "name": "Barrio",
+      "range": "Interplanetary",
+      "status": "Active"
+    },
+    {
+      "id": "paco",
+      "name": "paco",
+      "range": "Interplanetary",
+      "status": "Pending"
     }
   ],
   "trips": [

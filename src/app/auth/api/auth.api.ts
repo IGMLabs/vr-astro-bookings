@@ -23,6 +23,6 @@ export class AuthAPI  {
   }
 
   public login$(login: Login) {
-    return this.http.post<AuthResponse>(this.url + 'login', login).pipe( tap(response => this.accessToken = response.accessToken )));
+    return this.http.post<AuthResponse>(this.url + 'login', login).pipe( tap(response => this.accessToken = response.accessToken ));
   }
 }
