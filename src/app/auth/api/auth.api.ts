@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Login } from './login.interface';
 import { Register } from './register.interface';
+import { tap } from 'rxjs';
+import { AuthResponse } from './auth-response.interface';
 
 
 @Injectable({
@@ -12,6 +14,8 @@ import { Register } from './register.interface';
 export class AuthAPI  {
   private url = environment.apiUrl;
 
+  public accessToken ="";
+
   constructor(protected http: HttpClient) {}
 
   public register$(register: Register) {
@@ -19,6 +23,6 @@ export class AuthAPI  {
   }
 
   public login$(login: Login) {
-    return this.http.post<Login>(this.url + 'login', login);
+    return this.http.post<AuthResponse>(this.url + 'login', login).pipe( tap(response => this.accessToken = response.accessToken )));
   }
 }
