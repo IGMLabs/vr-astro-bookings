@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './api/error.interceptor';
 import { AuthInterceptor } from '../auth/api/auth.interceptor';
+import { StorageBase } from './utils/storage.base';
+import { LocalStorage } from './utils/local-storage.service';
 
 
 
@@ -22,7 +24,8 @@ import { AuthInterceptor } from '../auth/api/auth.interceptor';
   exports:[HeaderComponent, FooterComponent],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi: true},
-    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true}
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true},
+    {provide: StorageBase, useClass: LocalStorage}
   ]
 
 })

@@ -5,6 +5,7 @@ import { Login } from './login.interface';
 import { Register } from './register.interface';
 import { tap } from 'rxjs';
 import { AuthResponse } from './auth-response.interface';
+import { StorageBase } from 'src/app/core/utils/storage.base';
 
 
 @Injectable({
@@ -16,10 +17,15 @@ export class AuthAPI  {
 
   public accessToken ="";
 
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient, private storage :StorageBase) {
+    this.accessToken = storage.getToken();
+  }
 
   public register$(register: Register) {
-    return this.http.post<Register>(this.url + 'register', register);
+    return this.http.post<Register>(this.url + 'register', register).tap( (response)=> {
+                                                                                    this.accessToken = response.accessToken;
+                                                                                    this.storage.setToken(this.accessToken);
+    });
   }
 
   public login$(login: Login) {
