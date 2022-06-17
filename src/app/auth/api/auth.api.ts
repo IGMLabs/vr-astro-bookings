@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Login } from './login.interface';
 import { Register } from './register.interface';
-import { tap } from 'rxjs';
+import { pipe, tap } from 'rxjs';
 import { AuthResponse } from './auth-response.interface';
 import { StorageBase } from 'src/app/core/utils/storage.base';
 
@@ -22,13 +22,13 @@ export class AuthAPI  {
   }
 
   public register$(register: Register) {
-    return this.http.post<Register>(this.url + 'register', register).tap( (response)=> {
+    return this.http.post<AuthResponse>(this.url + 'register', register).pipe(tap( response=> {
                                                                                     this.accessToken = response.accessToken;
                                                                                     this.storage.setToken(this.accessToken);
-    });
+                                                                                          }));
   }
 
   public login$(login: Login) {
-    return this.http.post<AuthResponse>(this.url + 'login', login).pipe( tap(response => this.accessToken = response.accessToken ));
+    return this.http.post<AuthResponse>(this.url + 'login', login).pipe( tap(response =>{ this.accessToken = response.accessToken;this.storage.setToken(this.accessToken); }));
   }
 }
